@@ -7,7 +7,8 @@ var express = require('express')
   , routes = require('./routes');
 
 var app = module.exports = express.createServer();
-var everyone = require("now").initialize(app, {socketio: {transports:['xhr-polling','jsonp-polling']}});
+var nowjs = require('now');
+var everyone = nowjs.initialize(app, {socketio: {transports:['xhr-polling','jsonp-polling']}});
 // Configuration
 
 app.configure(function(){
@@ -31,11 +32,20 @@ app.configure('production', function(){
 
 app.get('/', routes.index);
 
-
+cache = [];
+CACHE_SIZE = 10000;
 //NOWJS CONFIG
 everyone.now.distribute_draw = function(first, second, color, size) {
+	if (cache.length > CACHE_SIZE)
+		cache.shift();
+		
+	cache.push([first, second, color, size]);
 	everyone.now.receive_draw(first, second, color, size);
 }
+
+nowjs.on('connect', function() {
+	this.now.receive_initial_draw(cache);
+});
 
 app.listen(process.env.PORT);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);

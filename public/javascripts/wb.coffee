@@ -59,6 +59,10 @@ $(window).load ->
 	now.receive_draw = (first, second, color, size) ->
 		draw_point first, second, color, size
 		
+	now.receive_initial_draw = (cache) ->
+		for c in cache
+			draw_point c[0], c[1], c[2], c[3]
+		
 	# Time to go
 	setup_canvas()
 
