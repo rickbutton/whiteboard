@@ -3,12 +3,25 @@
 <script type="text/coffeescript" src="javascripts/wb.coffee"></script>
 <h1><%= title %></h1>
 <div>
-Color: <select id="color_select">
-  <option value="black">Black</option>
-  <option value="red">Red</option>
-  <option value="green">Green</option>
-  <option value="blue">Blue</option>
-</select>
+	<div>
+		Color: 
+		<select id="color_select">
+		  <option value="black">Black</option>
+		  <option value="red">Red</option>
+		  <option value="green">Green</option>
+		  <option value="blue">Blue</option>
+		</select>
+	</div>
+
+	<div>
+	Size: 
+		<select id="size_select">
+		  <option value="2">2</option>
+		  <option value="5" selected="true">5</option>
+		  <option value="8">8</option>
+		  <option value="11">11</option>
+		</select>
+	</div>
+	<canvas id="board" width="500" height="500" style="border:1px solid #c3c3c3;">
+	</canvas>
 </div>
-<canvas id="board" width="500" height="500" style="border:1px solid #c3c3c3;">
-</canvas>

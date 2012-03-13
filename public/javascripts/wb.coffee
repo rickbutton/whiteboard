@@ -27,13 +27,15 @@ $(window).load ->
 		$('canvas#board').mousemove (e) ->
 			p = point e.offsetX, e.offsetY
 			color = $('#color_select').val()
-			draw_queue.push [first_point, p, color] if draw
+			size = $('#size_select').val()
+			draw_queue.push [first_point, p, color, size] if draw
 			first_point = p if draw
 
-	draw_point = (first, second, color) ->
+	draw_point = (first, second, color, size) ->
 		#console.log first.x + ':' + first.y + '    ' + second.x + ':' + second.y
 		ctx.beginPath()
 		ctx.strokeStyle = color
+		ctx.lineWidth = size
 		ctx.moveTo first.x - 1, first.y - 1
 		ctx.lineTo second.x, second.y
 		ctx.stroke()
@@ -42,10 +44,10 @@ $(window).load ->
 		return if draw_queue.length is 0
 
 		next = draw_queue.shift()
-		now.distribute_draw next[0], next[1], next[2]
+		now.distribute_draw next[0], next[1], next[2], next[3]
 
-	now.receive_draw = (first, second, color) ->
-		draw_point first, second, color
+	now.receive_draw = (first, second, color, size) ->
+		draw_point first, second, color, size
 		
 	# Time to go
 	setup_canvas()

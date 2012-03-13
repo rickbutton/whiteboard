@@ -33,8 +33,8 @@ app.get('/', routes.index);
 
 
 //NOWJS CONFIG
-everyone.now.distribute_draw = function(first, second, color) {
-	everyone.now.receive_draw(first, second, color);
+everyone.now.distribute_draw = function(first, second, color, size) {
+	everyone.now.receive_draw(first, second, color, size);
 }
 
 app.listen(process.env.PORT);
