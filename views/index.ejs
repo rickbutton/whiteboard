@@ -1,6 +1,18 @@
 <script src="/nowjs/now.js"></script>
 <script type="text/javascript" src="javascripts/coffee-script.js"></script>
 <script type="text/coffeescript" src="javascripts/wb.coffee"></script>
+<style>
+* { margin: 0; padding: 0;}
+
+html, body { height: 100%; width: 100%; }
+
+#board {
+    display: block;
+		border:1px solid #c3c3c3;
+		width: 500;
+		height: 500;
+}
+</style>
 <h1><%= title %></h1>
 <div>
 	<div>
@@ -25,6 +37,6 @@
 			<option value="50">50</option>
 		</select>
 	</div>
-	<canvas id="board" width="500" height="500" style="border:1px solid #c3c3c3;">
+	<canvas width="500" height="500" id="board">
 	</canvas>
 </div>

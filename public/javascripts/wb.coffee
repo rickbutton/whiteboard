@@ -16,6 +16,7 @@ $(window).load ->
 		ctx.strokeStyle = 'black'
 		ctx.lineWidth = 5
 		ctx.lineCap = 'round'
+		#resize()
 
 		$('canvas#board').mousedown ->
 			draw = true
@@ -30,6 +31,15 @@ $(window).load ->
 			size = $('#size_select').val()
 			draw_queue.push [first_point, p, color, size] if draw
 			first_point = p if draw
+			
+			#$(window).resize (e) ->
+				#resize()
+			
+	#resize = ->
+		#canvas = $('canvas#board')
+		#canvas.attr("width", $(window).get(0).innerWidth);
+		#canvas.attr("height", $(window).get(0).innerHeight);
+		
 
 	draw_point = (first, second, color, size) ->
 		#console.log first.x + ':' + first.y + '    ' + second.x + ':' + second.y
