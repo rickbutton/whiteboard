@@ -7,7 +7,7 @@ var express = require('express')
   , routes = require('./routes');
 
 var app = module.exports = express.createServer();
-var everyone = require("now").initialize(app);
+var everyone = require("now").initialize(app, {socketio: {transports:['xhr-polling','jsonp-polling']}});
 // Configuration
 
 app.configure(function(){
