@@ -37,5 +37,5 @@ everyone.now.distribute_draw = function(first, second, color) {
 	everyone.now.receive_draw(first, second, color);
 }
 
-app.listen(3000);
+app.listen(process.env.PORT);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
